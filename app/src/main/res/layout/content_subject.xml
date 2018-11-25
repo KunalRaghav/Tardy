@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".SubjectActivity"
+    tools:showIn="@layout/activity_subject"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/subtvSubjectPercentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:text="Null %"
+        android:padding="4dp"
+        android:textAlignment="center"/>
+    <android.support.design.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="4dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Classes:"
+            android:padding="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+
+        <EditText
+            android:id="@+id/subetTotalClasses"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:ems="10"
+            android:inputType="number"
+            android:textAlignment="center"
+            tools:text="hhghg" />
+    </android.support.design.card.MaterialCardView>
+    <android.support.design.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="4dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Classes Attended:"
+            android:padding="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+
+        <EditText
+            android:id="@+id/subetClassesAttended"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:ems="10"
+            android:inputType="number"
+            android:textAlignment="center" />
+    </android.support.design.card.MaterialCardView>
+
+</android.support.v7.widget.LinearLayoutCompat>

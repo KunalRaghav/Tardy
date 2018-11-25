@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tardy</string>
+    <string name="title_activity_add_subject">Add Subject</string>
+    <string name="title_activity_subject">SubjectActivity</string>
+</resources>

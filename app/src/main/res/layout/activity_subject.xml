@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SubjectActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_subject" />
+    <android.support.design.card.MaterialCardView
+        android:id="@+id/bottomcard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_margin="0dp"
+        app:contentPadding="4dp"
+        app:cardCornerRadius="5dp"
+        android:elevation="16dp">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            app:cornerRadius="80dp"
+            android:clickable="true"
+            android:layout_gravity="right"
+            android:text="Class +"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            app:cornerRadius="80dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="100dp"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="Missed -"
+            android:textColor="#f00"
+            />
+    </android.support.design.card.MaterialCardView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabSaveChanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="52dp"
+        app:fabCustomSize="58dp"
+        android:src="@android:drawable/ic_menu_save"
+        />
+
+</android.support.design.widget.CoordinatorLayout>
