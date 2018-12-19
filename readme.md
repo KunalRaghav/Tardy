@@ -1,6 +1,6 @@
 # Tardy
 
-An app that an help track attendance.
+An app that can help track attendance.
 
 ## Features:
 
