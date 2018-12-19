@@ -6,7 +6,7 @@ An app that can help track attendance.
 
 - offline
 - displays the amount of classes that can be bunked
-- displays the amount of classes that should attended to reach the desired percentage
+- displays the amount of classes that should be attended to reach the desired percentage
 
 ## Screenshots:
 
