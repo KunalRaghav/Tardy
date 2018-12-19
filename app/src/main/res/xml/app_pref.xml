@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Tardy Settings">
+        <EditTextPreference
+            android:key="pref_user"
+            android:inputType="textCapWords"
+            android:title="Username"
+            android:defaultValue="SomeName"/>
+        <EditTextPreference
+            android:key="pref_desired"
+            android:inputType="numberDecimal"
+            android:title="Desired Percentage"/>
+        <Preference
+            android:title="Meet my creator"
+            android:key="githubLink">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.github.com/KunalRaghav"/>
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>

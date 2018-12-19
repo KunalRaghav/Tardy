@@ -1,77 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".AddSubjectActivity"
-    tools:showIn="@layout/activity_add_subject">
+    tools:context=".activities.AddSubjectActivity"
+    tools:showIn="@layout/activity_add_subject"
+    android:background="@color/color_DesertSand">
 
-    <TextView
-        android:id="@+id/tvSubjectName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Subject Name:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        app:layout_constraintBaseline_toBaselineOf="@+id/etSubjectName"
-        app:layout_constraintEnd_toStartOf="@+id/etSubjectName"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvTotalClasses"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Total Classes:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        app:layout_constraintBaseline_toBaselineOf="@+id/etTotalClasses"
-        app:layout_constraintEnd_toEndOf="@+id/tvSubjectName"
-        app:layout_constraintStart_toStartOf="parent" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        app:contentPadding="24dp"
+        android:layout_margin="23dp"
+        android:translationZ="4dp"
+        android:layout_marginBottom="56dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="10dp"
 
-    <TextView
-        android:id="@+id/tvClassesAttended"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Classes Attended:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        app:layout_constraintBaseline_toBaselineOf="@+id/etClassesAttended"
-        app:layout_constraintEnd_toEndOf="@+id/tvTotalClasses"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/etSubjectName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Subject Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etTotalClasses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/etSubjectName"
-        app:layout_constraintTop_toBottomOf="@+id/etSubjectName" />
-
-    <EditText
-        android:id="@+id/etClassesAttended"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTotalClasses" />
-</android.support.constraint.ConstraintLayout>
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:orientation="vertical"
+            android:weightSum="9">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Subject name"
+                app:hintEnabled="true"
+                app:hintAnimationEnabled="true"
+                android:layout_weight="2"
+                app:boxStrokeColor="@color/color_GreyInde"
+                style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox"
+                app:hintTextColor="@color/color_FuzzyWuzzy"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSubjectName"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textCapWords"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Total classes"
+                app:boxStrokeColor="@color/color_GreyInde"
+                app:hintEnabled="true"
+                app:hintAnimationEnabled="true"
+                style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox"
+                app:hintTextColor="@color/color_FuzzyWuzzy"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTotalClasses"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Attended classes"
+                app:hintEnabled="true"
+                app:hintAnimationEnabled="true"
+                android:layout_weight="2"
+                app:boxStrokeColor="@color/color_GreyInde"
+                style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox"
+                app:hintTextColor="@color/color_FuzzyWuzzy"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etClassesAttended"
+                    android:background="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"/>
+            </com.google.android.material.textfield.TextInputLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

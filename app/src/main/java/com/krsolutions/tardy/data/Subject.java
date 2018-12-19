@@ -1,11 +1,11 @@
-package com.krsolutions.tardy;
+package com.krsolutions.tardy.data;
 
 public class Subject {
 
-    long subjectID;
-    String SubjectName;
-    int TotalClasses;
-    int ClassesAttended;
+    public long subjectID;
+    public String SubjectName;
+    public int TotalClasses;
+    public int ClassesAttended;
 
     public Subject(){
         subjectID=-1;

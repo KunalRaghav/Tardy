@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="color_DesertSand">#ecc8af</color>
+    <color name="color_PastelPink">#e7ad99</color>
+    <color name="color_FuzzyWuzzy">#ce796b</color>
+    <color name="color_Deer">#c18c5d</color>
+    <color name="color_GreyInde">#495867</color>
 </resources>

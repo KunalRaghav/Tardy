@@ -9,30 +9,55 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation">
+
+        </activity>
+        <activity
+            android:name=".activities.AddSubjectActivity"
+            android:label="@string/title_activity_add_subject"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.krsolutions.tardy.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SubjectActivity"
+            android:label="@string/title_activity_subject"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.krsolutions.tardy.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.krsolutions.tardy.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.SplashActivity"
+            android:label="Tardy"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation"
+            android:theme="@style/AppTheme.launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".AddSubjectActivity"
-            android:label="@string/title_activity_add_subject"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.krsolutions.tardy.MainActivity" />
-        </activity>
-        <activity
-            android:name=".SubjectActivity"
-            android:label="@string/title_activity_subject"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.krsolutions.tardy.MainActivity" />
         </activity>
     </application>
 

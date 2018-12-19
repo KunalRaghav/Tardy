@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".SubjectActivity"
+    tools:context=".activities.SubjectActivity"
     tools:showIn="@layout/activity_subject"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/subtvSubjectPercentage"
@@ -16,59 +17,79 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:text="Null %"
         android:padding="4dp"
+        android:layout_marginBottom="24dp"
         android:textAlignment="center"/>
-    <android.support.design.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp"
-        app:cardUseCompatPadding="true"
-        app:contentPadding="4dp"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="30dp"
+        android:elevation="4dp"
+        app:contentPaddingBottom="10dp"
+        app:contentPaddingTop="10dp"
+        android:translationZ="4dp"
         android:layout_gravity="center"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="4dp">
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:boxCornerRadiusBottomEnd="4dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:boxCornerRadiusTopStart="4dp"
+            app:boxBackgroundMode="outline"
             android:layout_height="wrap_content"
-            android:text="Total Classes:"
-            android:padding="4dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
-
-        <EditText
+            android:layout_gravity="center_horizontal"
+            android:hint="Total Classes"
+            app:hintEnabled="true"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:hintAnimationEnabled="true"
+            app:boxBackgroundColor="#fff"
+            app:hintTextColor="@color/color_FuzzyWuzzy"
+            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/subetTotalClasses"
-            android:layout_width="60dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:ems="10"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:textSize="20sp"
             android:inputType="number"
             android:textAlignment="center"
             tools:text="hhghg" />
-    </android.support.design.card.MaterialCardView>
-    <android.support.design.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="4dp"
-        app:cardUseCompatPadding="true"
-        app:contentPadding="4dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="4dp">
-        <TextView
-            android:layout_width="wrap_content"
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            app:boxCornerRadiusBottomEnd="4dp"
+            android:layout_marginTop="100dp"
+            app:boxCornerRadiusBottomStart="4dp"
+            app:boxCornerRadiusTopEnd="4dp"
+            app:hintTextColor="@color/color_FuzzyWuzzy"
+            app:boxCornerRadiusTopStart="4dp"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:boxBackgroundMode="outline"
             android:layout_height="wrap_content"
-            android:text="Classes Attended:"
-            android:padding="4dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
+            android:layout_gravity="center_horizontal"
+            android:hint="Attended Classes"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxBackgroundColor="#fff"
+            style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/subetClassesAttended"
+                android:layout_width="match_parent"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:textSize="20sp"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:text="hhghg" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-        <EditText
-            android:id="@+id/subetClassesAttended"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:ems="10"
-            android:inputType="number"
-            android:textAlignment="center" />
-    </android.support.design.card.MaterialCardView>
-
-</android.support.v7.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>

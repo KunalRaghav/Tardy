@@ -1,26 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity"
+    android:paddingTop="0dp"
+    android:background="@color/color_DesertSand">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_marginTop="4dp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_margin="0dp"
+        android:clickable="true"
+        android:backgroundTint="@color/color_Deer"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp"
+        android:elevation="4dp"
+        android:translationZ="6dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="2dp"
+            android:paddingLeft="4dp"
+            android:paddingBottom="2dp">
+            <TextView
+                android:id="@+id/greeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Hi,"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                />
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                tools:text="JohnDoe"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+    </com.google.android.material.card.MaterialCardView>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/progressBar"
+        android:visibility="gone"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:paddingTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:paddingBottom="56dp"/>
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/floatingActionButton"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/color_GreyInde"
         android:clickable="true"
-        app:srcCompat="@drawable/add"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        app:fabCustomSize="48dp"/>
+        android:padding="10dp"
+        android:text="Add Subject"
+        android:translationZ="6dp"
+        app:cornerRadius="20dp"
+        app:icon="@drawable/ic_add_circle_black_24dp"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="top|center"
+        app:rippleColor="@color/color_FuzzyWuzzy"/>
 
-</android.support.design.widget.CoordinatorLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/color_Deer"
+        app:fabAlignmentMode="center">
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
