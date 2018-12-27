@@ -103,23 +103,30 @@ public class SubjectActivity extends AppCompatActivity {
         fabSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int tc = Integer.parseInt(etTotalClasses.getText().toString());
-                int ca = Integer.parseInt(etClassesAttended.getText().toString());
-                if(ca<=tc) {
-                    SQLiteDatabase db = dbHelper.getWritableDatabase();
-                    String query = "Update " + TABLE_NAME + " set " + COLUMN_NAME_TOTAL_CLASSES + "=" + tc + ", " + COLUMN_NAME_CLASSES_ATTENDED + "=" + ca + " where " + COLUMN_NAME_SUBJECT + "=\"" + subname + "\";";
-                    Log.d(TAG, "onClick: Query\n" + query);
-                    db.execSQL(query);
-                    Snackbar snackbar = Snackbar.make(v, "Updated Subject", Snackbar.LENGTH_SHORT).setAction("Action", null);
-                    snackbar.setAnchorView(fabSaveChanges);
-                    snackbar.show();
-                    db.close();
-                    subjectPercentage.setText(String.format("%.2f", funtool.calcPerc(ca, tc)) + " %");
-                }else{
-                    Snackbar snackbar = Snackbar.make(v,"Attended classes can't be more than total classes",Snackbar.LENGTH_LONG);
+                try{
+                    int tc = Integer.parseInt(etTotalClasses.getText().toString());
+                    int ca = Integer.parseInt(etClassesAttended.getText().toString());
+                    if(ca<=tc) {
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+                        String query = "Update " + TABLE_NAME + " set " + COLUMN_NAME_TOTAL_CLASSES + "=" + tc + ", " + COLUMN_NAME_CLASSES_ATTENDED + "=" + ca + " where " + COLUMN_NAME_SUBJECT + "=\"" + subname + "\";";
+                        Log.d(TAG, "onClick: Query\n" + query);
+                        db.execSQL(query);
+                        Snackbar snackbar = Snackbar.make(v, "Updated Subject", Snackbar.LENGTH_SHORT).setAction("Action", null);
+                        snackbar.setAnchorView(fabSaveChanges);
+                        snackbar.show();
+                        db.close();
+                        subjectPercentage.setText(String.format("%.2f", funtool.calcPerc(ca, tc)) + " %");
+                    }else{
+                        Snackbar snackbar = Snackbar.make(v,"Attended classes can't be more than total classes",Snackbar.LENGTH_LONG);
+                        snackbar.setAnchorView(fabSaveChanges);
+                        snackbar.show();
+                    }
+                }catch (Exception e){
+                    Snackbar snackbar = Snackbar.make(v, "Field can't be empty", Snackbar.LENGTH_SHORT).setAction("Action", null);
                     snackbar.setAnchorView(fabSaveChanges);
                     snackbar.show();
                 }
+
             }
         });
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
