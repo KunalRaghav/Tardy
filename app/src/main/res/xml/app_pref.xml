@@ -5,8 +5,7 @@
         <EditTextPreference
             android:key="pref_user"
             android:inputType="textCapWords"
-            android:title="Username"
-            android:defaultValue="SomeName"/>
+            android:title="Username" />
         <EditTextPreference
             android:key="pref_desired"
             android:inputType="numberDecimal"

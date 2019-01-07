@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@android:color/white">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tell us a little about yourself:"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/color_GreyInde"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintTextColor="@android:color/black"
+        android:textColorHint="@color/color_GreyInde"
+        android:hint="What should we call you?"
+        app:hintEnabled="true"
+        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox.Dense">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textCursorDrawable="@null"
+            android:textColor="@android:color/black"
+            android:id="@+id/etUsername"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveButton"
+        android:layout_margin="25dp"
+        android:padding="16dp"
+        app:cornerRadius="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:backgroundTint="@color/color_GreyInde"
+        app:icon="@drawable/ic_save_black_24dp"
+        app:iconGravity="textStart"/>
+</LinearLayout>

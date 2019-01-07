@@ -1,12 +1,9 @@
 package com.krsolutions.tardy.adapter;
 
-import android.app.AlertDialog;
+import android.app.ActivityOptions;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,7 +20,6 @@ import android.widget.Toast;
 import com.krsolutions.tardy.R;
 import com.krsolutions.tardy.activities.SubjectActivity;
 import com.krsolutions.tardy.data.Subject;
-import com.krsolutions.tardy.data.TardyDbHelper;
 import com.krsolutions.tardy.data.funtool;
 
 import java.util.List;
@@ -94,7 +90,9 @@ public class TardyAdapter extends RecyclerView.Adapter<TardyAdapter.ViewHolder> 
                                 Intent intent = new Intent(v.getContext(),SubjectActivity.class);
                                 if(viewSubName.getText().toString()!="No Subjects Added Yet") {
                                     intent.putExtra("SubjectName", viewSubName.getText().toString());
-                                    v.getContext().startActivity(intent);
+                                    ActivityOptions options =
+                                            ActivityOptions.makeClipRevealAnimation(v,(int)v.getX(),(int)v.getY(),v.getWidth(),100);
+                                    v.getContext().startActivity(intent,options.toBundle());
                                 }else {
                                     Toast.makeText(v.getContext(),"Add a subject",Toast.LENGTH_SHORT).show();
                                 }
@@ -110,7 +108,9 @@ public class TardyAdapter extends RecyclerView.Adapter<TardyAdapter.ViewHolder> 
                     Intent intent = new Intent(v.getContext(),SubjectActivity.class);
                     if(viewSubName.getText().toString()!="No Subjects Added Yet") {
                         intent.putExtra("SubjectName", viewSubName.getText().toString());
-                        v.getContext().startActivity(intent);
+                        ActivityOptions options =
+                                ActivityOptions.makeClipRevealAnimation(v,(int)v.getX(),(int)v.getY(),v.getWidth(),100);
+                        v.getContext().startActivity(intent,options.toBundle());
                     }else {
                         Toast.makeText(v.getContext(),"Add a subject",Toast.LENGTH_SHORT).show();
                     }

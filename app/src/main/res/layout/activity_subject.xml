@@ -8,20 +8,15 @@
     tools:context=".activities.SubjectActivity"
     >
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/subTopAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:expanded="true"
-        android:background="@color/color_Deer">
+
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/subToolbar"
             android:layout_width="match_parent"
             app:titleTextColor="#fff"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/color_Deer" />
 
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+
 
     <include layout="@layout/content_subject" />
 

@@ -40,7 +40,6 @@ public class SubjectActivity extends AppCompatActivity {
     @BindView(R.id.btn_minus) Button btnMinus;
     @BindView(R.id.fabSaveChanges) FloatingActionButton fabSaveChanges;
     @BindView(R.id.subDelete) ImageView btnDelete;
-    @BindView(R.id.subTopAppBar) AppBarLayout appBar;
     @BindView(R.id.subToolbar) Toolbar toolbar;
     private static final String TAG = "SubjectActivity";
     @Override
@@ -67,22 +66,34 @@ public class SubjectActivity extends AppCompatActivity {
         etClassesAttended.setFocusable(false);
         SQLiteDatabase write_db = dbHelper.getWritableDatabase();
         write_db.close();
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int tc = Integer.parseInt(etTotalClasses.getText().toString());
-                int ca = Integer.parseInt(etClassesAttended.getText().toString());
-                etTotalClasses.setText(String.valueOf(tc+1));
-                etClassesAttended.setText(String.valueOf(ca+1));
+                try {
+                    int tc = Integer.parseInt(etTotalClasses.getText().toString());
+                    int ca = Integer.parseInt(etClassesAttended.getText().toString());
+                    etTotalClasses.setText(String.valueOf(tc + 1));
+                    etClassesAttended.setText(String.valueOf(ca + 1));
+                }catch (Exception e){
+                    Snackbar snackbar = Snackbar.make(v,"Field is empty",Snackbar.LENGTH_LONG);
+                    snackbar.setAnchorView(fabSaveChanges);
+                    snackbar.show();
+                }
             }
         });
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int tc = Integer.parseInt(etTotalClasses.getText().toString());
-                int ca = Integer.parseInt(etClassesAttended.getText().toString());
-                etTotalClasses.setText(String.valueOf(tc+1));
+                try {
+                    int tc = Integer.parseInt(etTotalClasses.getText().toString());
+                    int ca = Integer.parseInt(etClassesAttended.getText().toString());
+                    etTotalClasses.setText(String.valueOf(tc + 1));
+                }catch (Exception e){
+                    Snackbar snackbar = Snackbar.make(v,"Field is empty",Snackbar.LENGTH_LONG);
+                    snackbar.setAnchorView(fabSaveChanges);
+                    snackbar.show();
+                }
             }
         });
         etClassesAttended.setOnLongClickListener(new View.OnLongClickListener() {

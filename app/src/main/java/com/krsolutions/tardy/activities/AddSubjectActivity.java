@@ -71,6 +71,7 @@ public class AddSubjectActivity extends AppCompatActivity {
                             long newRowId = db.insertOrThrow(TardyContract.TardyEntry.TABLE_NAME, null, values);
                             Log.d(TAG, "onClick: New Data Inserted:" + newRowId);
                             Toast.makeText(view.getContext(), "We'll track " + mSubject.SubjectName, Toast.LENGTH_SHORT).show();
+                            finish();
                         } catch (SQLiteConstraintException e) {
                             Snackbar snackbar = Snackbar.make(view, "2 subjects cannot have the same name", Snackbar.LENGTH_LONG);
                             snackbar.setAnchorView(R.id.fab);

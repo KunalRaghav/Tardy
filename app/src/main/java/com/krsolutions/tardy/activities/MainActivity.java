@@ -1,6 +1,6 @@
 package com.krsolutions.tardy.activities;
 
-import android.content.Context;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,7 +16,6 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.button.MaterialButton;
 import com.krsolutions.tardy.R;
 import com.krsolutions.tardy.adapter.LoadTask;
-import com.krsolutions.tardy.adapter.TardyAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AddSubjectActivity.class);
-                startActivity(intent);
+                ActivityOptions options =
+                        ActivityOptions.makeClipRevealAnimation(v,(int)v.getY(),(int)v.getX(),v.getWidth(),100);
+                startActivity(intent,options.toBundle());
             }
         });
     }
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        String uname = sp.getString("pref_user", "no_user_found");
+        String uname = sp.getString("pref_user", "");
         username.setText(uname);
         new LoadTask(getApplicationContext(),progressBar,recyclerView).execute();
     }

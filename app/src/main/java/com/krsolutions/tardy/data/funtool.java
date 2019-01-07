@@ -1,6 +1,5 @@
 package com.krsolutions.tardy.data;
 
-import android.app.Application;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,7 +27,7 @@ public class funtool {
     public static int classesToAttend(float attended, float total, float desired){
         float req=0;
         req=(desired/100*total-attended)/(1-desired/100);
-        return (int)req;
+        return (int)(req+0.5);
     }
     public static int upClass(Context context,String subjectName){
         TardyDbHelper dbHelper = new TardyDbHelper(context);
@@ -68,10 +67,6 @@ public class funtool {
                 ", " + TardyContract.TardyEntry.COLUMN_NAME_TOTAL_CLASSES+"= " +total +
                 " WHERE " + TardyContract.TardyEntry.COLUMN_NAME_SUBJECT+"= "+"\""+subName+"\""+";";
         return string;
-
-    }
-
-    public static void refresh(Context context){
 
     }
 }
