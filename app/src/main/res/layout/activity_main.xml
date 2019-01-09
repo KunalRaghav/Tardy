@@ -62,7 +62,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:paddingBottom="56dp"/>
+        android:paddingBottom="56dp"
+        tools:listitem="@layout/subjectview"/>
     </LinearLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/floatingActionButton"

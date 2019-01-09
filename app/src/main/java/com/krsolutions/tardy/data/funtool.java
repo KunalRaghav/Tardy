@@ -69,4 +69,10 @@ public class funtool {
         return string;
 
     }
+
+     public enum SORT{
+        alpha,
+        percent,
+        classAttended
+    }
 }

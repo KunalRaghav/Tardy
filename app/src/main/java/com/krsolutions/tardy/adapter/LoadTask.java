@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -23,6 +24,9 @@ public class LoadTask extends AsyncTask<Void,Subject,Void> {
     private RecyclerView recyclerView;
     private TardyAdapter adapter;
     private ArrayList<Subject> subjects = new ArrayList<>();
+    private funtool.SORT sortOrder;
+
+    private static final String TAG = "LoadTask";
 
     public LoadTask(Context context, ProgressBar progressBar, RecyclerView recyclerView) {
         this.context = context;
@@ -30,8 +34,16 @@ public class LoadTask extends AsyncTask<Void,Subject,Void> {
         this.recyclerView = recyclerView;
     }
 
+    public LoadTask(Context context, ProgressBar progressBar, RecyclerView recyclerView, funtool.SORT sortOrder) {
+        this.context = context;
+        this.progressBar = progressBar;
+        this.recyclerView = recyclerView;
+        this.sortOrder = sortOrder;
+    }
+
     @Override
     protected void onPreExecute() {
+        Log.d(TAG, "onPreExecute: attaching adapter of recyclerView");
         adapter = new TardyAdapter(subjects,context,progressBar,recyclerView);
         recyclerView.setAdapter(adapter);
         progressBar.setVisibility(View.VISIBLE);
@@ -53,7 +65,24 @@ public class LoadTask extends AsyncTask<Void,Subject,Void> {
     protected Void doInBackground(Void... voids) {
         TardyDbHelper dbHelper = new TardyDbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TardyContract.TardyEntry.TABLE_NAME, null);
+        Cursor cursor;
+        if(sortOrder!=null) {
+            switch (sortOrder) {
+                case alpha:
+                    cursor = db.rawQuery("SELECT * FROM " + TardyContract.TardyEntry.TABLE_NAME + " ORDER BY " + TardyContract.TardyEntry.COLUMN_NAME_SUBJECT, null);
+                    break;
+                case percent:
+                    cursor = db.rawQuery("SELECT *, ("+ TardyContract.TardyEntry.COLUMN_NAME_CLASSES_ATTENDED+"*100.0/"+TardyContract.TardyEntry.COLUMN_NAME_TOTAL_CLASSES +") as PERCENT FROM " + TardyContract.TardyEntry.TABLE_NAME + " ORDER BY PERCENT", null);
+                    break;
+                case classAttended:
+                    cursor = db.rawQuery("SELECT * FROM " + TardyContract.TardyEntry.TABLE_NAME + " ORDER BY "+ TardyContract.TardyEntry.COLUMN_NAME_CLASSES_ATTENDED, null);
+                    break;
+                default:
+                    cursor = db.rawQuery("SELECT * FROM " + TardyContract.TardyEntry.TABLE_NAME, null);
+            }
+        }else{
+            cursor = db.rawQuery("SELECT * FROM " + TardyContract.TardyEntry.TABLE_NAME, null);
+        }
         while (cursor.moveToNext()){
             Subject mSubject = funtool.DbtoObject(cursor);
             publishProgress(mSubject);

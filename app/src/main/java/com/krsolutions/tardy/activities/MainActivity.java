@@ -5,17 +5,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.button.MaterialButton;
 import com.krsolutions.tardy.R;
 import com.krsolutions.tardy.adapter.LoadTask;
+import com.krsolutions.tardy.data.funtool;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -61,20 +64,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        SharedPreferences sp = getSharedPreferences("com.krsolutions.tardy",MODE_PRIVATE);
         switch (item.getItemId()) {
             case R.id.setting:
                 Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
                 startActivity(intent);
-//                Fragment preferenceFragment = new SettingsFragment();
-//                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//                ft.add(R.id.pref_container, preferenceFragment);
-//                ft.commit();
                 return true;
+            case R.id.sortByTimeAdded:
+                sp.edit().putInt("sortOrder",0).commit();
+                new LoadTask(getApplicationContext(),progressBar,recyclerView).execute();
+                return true;
+            case R.id.sortByAlpha:
+                new LoadTask(getApplicationContext(),progressBar,recyclerView, funtool.SORT.alpha).execute();
+                sp.edit().putInt("sortOrder",1).commit();
+                return true;
+            case R.id.sortByPercentage:
+                new LoadTask(getApplicationContext(),progressBar,recyclerView, funtool.SORT.percent).execute();
+                sp.edit().putInt("sortOrder",2).commit();
+            case R.id.sortByClassAttended:
+                sp.edit().putInt("sortOrder",3).commit();
+                new LoadTask(getApplicationContext(),progressBar,recyclerView,funtool.SORT.classAttended).execute();
+
+
             default:
                 return super.onOptionsItemSelected(item);
 
         }
-//
 
 
     }
@@ -82,9 +97,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        String uname = sp.getString("pref_user", "");
+        Log.d(TAG, "onResume: IN HERE");
+        SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
+        String uname = dsp.getString("pref_user", "");
+        SharedPreferences sp = getSharedPreferences("com.krsolutions.tardy",MODE_PRIVATE);
         username.setText(uname);
-        new LoadTask(getApplicationContext(),progressBar,recyclerView).execute();
+        Log.d(TAG, "onResume: sortOrder: "+ sp.getInt("sortOrder",0));
+        switch(sp.getInt("sortOrder",0)) {
+            case 0:
+                new LoadTask(getApplicationContext(), progressBar, recyclerView).execute();
+                break;
+            case 1:
+                new LoadTask(getApplicationContext(),progressBar,recyclerView,funtool.SORT.alpha).execute();
+                break;
+            case 2:
+                new LoadTask(getApplicationContext(),progressBar,recyclerView,funtool.SORT.percent).execute();
+                break;
+            case 3:
+                new LoadTask(getApplicationContext(),progressBar,recyclerView,funtool.SORT.classAttended).execute();
+                break;
+        }
     }
 }

@@ -1,62 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:contentPadding="12dp"
-    android:elevation="1dp"
-    android:layout_marginLeft="24dp"
-    android:layout_marginRight="24dp"
-    android:layout_marginTop="60dp"
-    android:layout_marginBottom="60dp"
-    app:cardCornerRadius="20dp"
-    android:translationZ="2dp">
+    android:background="@drawable/some_gradient"
+    tools:context=".activities.SubjectActivity"
+    >
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="24dp"
+        app:contentPadding="8dp">
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="5">
-            <TextView
-                android:layout_width="match_parent"
+            android:weightSum="10">
+            <EditText
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                tools:text="Subject Name"
                 android:layout_gravity="center"
-                android:textAlignment="center"
-                android:textAllCaps="true"
+                android:id="@+id/etcSubjectName"
+                android:fontFamily="serif"
+                android:inputType="textCapCharacters"
                 android:textStyle="bold"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:fontFamily="serif"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
+                android:background="@null"
+                android:color="@android:color/black"
+                style="@style/TextAppearance.AppCompat.Headline"/>
+            <TextView
+                android:id="@+id/subtvSubjectPercentage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="3">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Classes Attended"
-                    android:layout_weight="1"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                tools:text="Null %"
+                android:padding="4dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:textAlignment="center"/>
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_margin="24dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
                     app:boxStrokeWidth="4dp"
+                    android:layout_weight="0.25"
+                    android:layout_gravity="center"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                     app:hintEnabled="true"
                     android:hint="ClassAttended">
-                <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/subetClassesAttended"
+                        android:background="@null"
+                        tools:text="jhsdhjshdjhsjd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:boxStrokeWidth="4dp"
+                    android:layout_weight="0.25"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                    app:hintEnabled="true"
+                    android:hint="Total Classes">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/subetTotalClasses"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:text="kskjdjskdjksjkd"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_gravity="bottom"
+                android:padding="4dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp">
+                <com.google.android.material.button.MaterialButton
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_plus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"/>
-                </com.google.android.material.textfield.TextInputLayout>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
+                    app:cornerRadius="10dp"
+                    android:clickable="true"
+                    android:layout_gravity="right"
+                    android:text="Class +"
+                    app:backgroundTint="#fff"
+                    app:rippleColor="@color/color_FuzzyWuzzy"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:textColor="@color/color_GreyInde"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_minus"
+                    android:layout_margin="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:rippleColor="@color/color_FuzzyWuzzy"
+                    app:cornerRadius="10dp"
+                    app:backgroundTint="#fff"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="100dp"
+                    android:clickable="true"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:text="Missed -"
+                    android:textColor="#f00"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.google.android.material.card.MaterialCardView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSaveChanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/color_GreyInde"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_save_black_24dp"
+        app:layout_anchor="@id/subjectAppBar" />
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/subjectAppBar"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/color_Deer"
+        app:fabAlignmentMode="end">
 
+        <ImageView
+            android:id="@+id/subDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:src="@drawable/ic_delete_black_24dp" />
 
-    </androidx.cardview.widget.CardView>
-
+    </com.google.android.material.bottomappbar.BottomAppBar>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,8 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/filter"
+        android:icon="@drawable/ic_sort_black_24dp"
+        app:showAsAction="always"
+        android:iconTintMode="src_atop"
+        android:title="Sort By">
+        <menu>
+                <item
+                    android:id="@+id/sortByTimeAdded"
+                    android:title="Time Added"/>
+                <item
+                    android:id="@+id/sortByAlpha"
+                    android:title="Subject Name"/>
+                <item
+                    android:id="@+id/sortByClassAttended"
+                    android:title="Classes Attended"/>
+                <item
+                    android:id="@+id/sortByPercentage"
+                    android:title="Percentage"/>
+        </menu>
+    </item>
+    <item
         android:id="@+id/setting"
         android:icon="@drawable/ic_settings_applications_black_24dp"
         android:title="Settings"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
+
 </menu>

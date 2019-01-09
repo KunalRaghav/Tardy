@@ -38,20 +38,30 @@ public class SubjectActivity extends AppCompatActivity {
     @BindView(R.id.subetClassesAttended) EditText etClassesAttended;
     @BindView(R.id.btn_plus) Button btnPlus;
     @BindView(R.id.btn_minus) Button btnMinus;
+    @BindView(R.id.etcSubjectName) EditText etSubjectName;
     @BindView(R.id.fabSaveChanges) FloatingActionButton fabSaveChanges;
     @BindView(R.id.subDelete) ImageView btnDelete;
-    @BindView(R.id.subToolbar) Toolbar toolbar;
+//    @BindView(R.id.subToolbar) Toolbar toolbar;
     private static final String TAG = "SubjectActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subject);
+        setContentView(R.layout.card_subject);
         ButterKnife.bind(this);
         Bundle extras = getIntent().getExtras();
         final String subname = extras.getString("SubjectName");
         final TardyDbHelper dbHelper = new TardyDbHelper(this);
         SQLiteDatabase read_db = dbHelper.getReadableDatabase();
-        toolbar.setTitle(subname);
+//        toolbar.setTitle(subname);
+        etSubjectName.setText(subname.toUpperCase());
+        etSubjectName.setFocusable(false);
+        etSubjectName.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                etSubjectName.setFocusableInTouchMode(true);
+                return true;
+            }
+        });
         Cursor cursor = read_db.rawQuery("Select * from "+TABLE_NAME+" where "+TardyContract.TardyEntry.COLUMN_NAME_SUBJECT +"=?",new String[]{subname});
         cursor.moveToFirst();
         Subject mSubject = funtool.DbtoObject(cursor);
@@ -59,14 +69,14 @@ public class SubjectActivity extends AppCompatActivity {
         fabSaveChanges.setColorFilter(Color.WHITE);
         final float perc =funtool.calcPerc(mSubject.getClassesAttended(),mSubject.getTotalClasses());
         subjectPercentage.setText(String.format("%.2f", perc) +" %");
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         etTotalClasses.setText(String.valueOf(mSubject.getTotalClasses()));
         etTotalClasses.setFocusable(false);
         etClassesAttended.setText(String.valueOf(mSubject.getClassesAttended()));
         etClassesAttended.setFocusable(false);
         SQLiteDatabase write_db = dbHelper.getWritableDatabase();
         write_db.close();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
