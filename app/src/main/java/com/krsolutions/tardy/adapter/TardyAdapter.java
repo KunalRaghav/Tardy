@@ -64,23 +64,28 @@ public class TardyAdapter extends RecyclerView.Adapter<TardyAdapter.ViewHolder> 
                         ImageView downClass = subjectMenu.findViewById(R.id.downClass);
                         ImageView editClass = subjectMenu.findViewById(R.id.editClass);
 
-
                         upClass.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View buttonView) {
-                                funtool.upClass(buttonView.getContext(),viewSubName.getText().toString());
+                                Subject updateSubject=funtool.upClass(buttonView.getContext(),viewSubName.getText().toString());
                                 viewMenu.removeViewAt(1);
                                 menuShown=false;
-                                new LoadTask(mBaseContext,mProgressBar,mRecyclerView).execute();
+                                int index = getAdapterPosition();
+                                subjectlist.remove(index);
+                                subjectlist.add(index,updateSubject);
+                                notifyItemChanged(index);
                             }
                         });
                         downClass.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View buttonView) {
-                                funtool.missedClass(buttonView.getContext(),viewSubName.getText().toString());
+                                Subject updateSubject=funtool.missedClass(buttonView.getContext(),viewSubName.getText().toString());
                                 viewMenu.removeViewAt(1);
                                 menuShown=false;
-                                new LoadTask(mBaseContext,mProgressBar,mRecyclerView).execute();
+                                int index=getAdapterPosition();
+                                subjectlist.remove(index);
+                                subjectlist.add(index,updateSubject);
+                                notifyItemChanged(index);
                             }
                         });
 

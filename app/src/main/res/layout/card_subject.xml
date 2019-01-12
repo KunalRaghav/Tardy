@@ -16,67 +16,98 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:cardCornerRadius="24dp"
-        app:contentPadding="8dp">
-        <androidx.appcompat.widget.LinearLayoutCompat
+        android:elevation="4dp"
+        android:translationZ="8dp"
+        app:contentPadding="0dp">
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="48dp">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="10">
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:id="@+id/etcSubjectName"
                 android:fontFamily="serif"
-                android:inputType="textCapCharacters"
                 android:textStyle="bold"
                 android:background="@null"
+                android:textSize="32dp"
+                android:layout_weight="5"
+                android:padding="24dp"
+                android:textCursorDrawable="@null"
+                tools:text="jhsjdhjhdh"
                 android:color="@android:color/black"
                 style="@style/TextAppearance.AppCompat.Headline"/>
             <TextView
                 android:id="@+id/subtvSubjectPercentage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 tools:text="Null %"
-                android:padding="4dp"
+                android:textSize="24dp"
+                android:textColor="@color/color_shadow"
+                android:background="@drawable/some_gradient"
+                android:padding="12dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="24dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="24dp"
+                    app:hintTextColor="@color/color_FuzzyWuzzy"
                     android:layout_height="wrap_content"
-                    app:boxStrokeWidth="4dp"
                     android:layout_weight="0.25"
                     android:layout_gravity="center"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                     app:hintEnabled="true"
-                    android:hint="ClassAttended">
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    android:hint="Classes Attended">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/subetClassesAttended"
                         android:background="@null"
                         tools:text="jhsdhjshdjhsjd"
+                        android:inputType="number"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@android:color/black"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="24dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    app:hintTextColor="@color/color_FuzzyWuzzy"
                     android:layout_gravity="center"
-                    app:boxStrokeWidth="4dp"
                     android:layout_weight="0.25"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                     app:hintEnabled="true"
                     android:hint="Total Classes">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/subetTotalClasses"
                         android:background="@null"
+                        android:textCursorDrawable="@null"
+                        android:textColor="@android:color/black"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="number"
                         tools:text="kskjdjskdjksjkd"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,7 +118,9 @@
                 android:layout_gravity="bottom"
                 android:padding="4dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp">
                 <com.google.android.material.button.MaterialButton
                     android:layout_margin="4dp"
                     android:id="@+id/btn_plus"
@@ -122,6 +155,7 @@
                     />
             </LinearLayout>
         </androidx.appcompat.widget.LinearLayoutCompat>
+        </ScrollView>
     </com.google.android.material.card.MaterialCardView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton

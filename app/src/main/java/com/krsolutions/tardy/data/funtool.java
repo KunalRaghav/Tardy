@@ -29,7 +29,7 @@ public class funtool {
         req=(desired/100*total-attended)/(1-desired/100);
         return (int)(req+0.5);
     }
-    public static int upClass(Context context,String subjectName){
+    public static Subject upClass(Context context,String subjectName){
         TardyDbHelper dbHelper = new TardyDbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+TardyContract.TardyEntry.TABLE_NAME+
@@ -42,10 +42,10 @@ public class funtool {
         int newTotal = mSubject.getTotalClasses()+1;
         int newAttended = mSubject.getClassesAttended()+1;
         db.execSQL(updateDB(newAttended,newTotal,mSubject.getSubjectName()));
-        return 0;
+        return new Subject(mSubject.subjectID,mSubject.SubjectName,mSubject.TotalClasses+1,mSubject.ClassesAttended+1);
     }
 
-    public static int missedClass(Context context,String subjectName){
+    public static Subject missedClass(Context context,String subjectName){
         TardyDbHelper dbHelper = new TardyDbHelper(context);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM "+TardyContract.TardyEntry.TABLE_NAME+
@@ -58,7 +58,7 @@ public class funtool {
         int newTotal = mSubject.getTotalClasses()+1;
         int newAttended = mSubject.getClassesAttended();
         db.execSQL(updateDB(newAttended,newTotal,mSubject.getSubjectName()));
-        return 0;
+        return new Subject(mSubject.subjectID,mSubject.SubjectName,mSubject.TotalClasses+1,mSubject.ClassesAttended);
     }
 
     public static String updateDB(int attend, int total, String subName){

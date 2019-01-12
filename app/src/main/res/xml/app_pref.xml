@@ -10,6 +10,9 @@
             android:key="pref_desired"
             android:inputType="numberDecimal"
             android:title="Desired Percentage"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="About">
         <Preference
             android:title="Meet my creator"
             android:key="githubLink">
@@ -17,5 +20,15 @@
                 android:action="android.intent.action.VIEW"
                 android:data="https://www.github.com/KunalRaghav"/>
         </Preference>
+        <Preference
+            android:title="Check for updates"
+            android:key="releaseLink">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.github.com/KunalRaghav/Tardy/releases"/>
+        </Preference>
+        <Preference
+            android:title="Version"
+            android:summary="@string/app_version"/>
     </PreferenceCategory>
 </PreferenceScreen>

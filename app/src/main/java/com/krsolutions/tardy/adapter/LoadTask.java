@@ -41,6 +41,10 @@ public class LoadTask extends AsyncTask<Void,Subject,Void> {
         this.sortOrder = sortOrder;
     }
 
+
+
+
+
     @Override
     protected void onPreExecute() {
         Log.d(TAG, "onPreExecute: attaching adapter of recyclerView");
@@ -59,6 +63,7 @@ public class LoadTask extends AsyncTask<Void,Subject,Void> {
     protected void onProgressUpdate(Subject... values) {
         subjects.add(values[0]);
         adapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -72,7 +77,7 @@ public class LoadTask extends AsyncTask<Void,Subject,Void> {
                     cursor = db.rawQuery("SELECT * FROM " + TardyContract.TardyEntry.TABLE_NAME + " ORDER BY " + TardyContract.TardyEntry.COLUMN_NAME_SUBJECT, null);
                     break;
                 case percent:
-                    cursor = db.rawQuery("SELECT *, ("+ TardyContract.TardyEntry.COLUMN_NAME_CLASSES_ATTENDED+"*100.0/"+TardyContract.TardyEntry.COLUMN_NAME_TOTAL_CLASSES +") as PERCENT FROM " + TardyContract.TardyEntry.TABLE_NAME + " ORDER BY PERCENT", null);
+                    cursor = db.rawQuery("SELECT *, ("+ "("+TardyContract.TardyEntry.COLUMN_NAME_CLASSES_ATTENDED+"*100.0)/"+TardyContract.TardyEntry.COLUMN_NAME_TOTAL_CLASSES +") as PERCENT FROM " + TardyContract.TardyEntry.TABLE_NAME + " ORDER BY PERCENT", null);
                     break;
                 case classAttended:
                     cursor = db.rawQuery("SELECT * FROM " + TardyContract.TardyEntry.TABLE_NAME + " ORDER BY "+ TardyContract.TardyEntry.COLUMN_NAME_CLASSES_ATTENDED, null);

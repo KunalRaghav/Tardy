@@ -28,6 +28,7 @@ public class UsernameFragment extends Fragment {
 
     View view = null;
     EditText etUsername;
+    EditText etPercent;
     MaterialButton saveButton;
     @Nullable
     @Override
@@ -43,20 +44,25 @@ public class UsernameFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         etUsername = view.findViewById(R.id.etUsername);
+        etPercent = view.findViewById(R.id.etPercent);
         saveButton = view.findViewById(R.id.saveButton);
 
-        final SharedPreferences prefs = getActivity().getSharedPreferences("com.krsolutions.tardy",MODE_PRIVATE);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = etUsername.getText().toString().trim();
+                String desiredPercent = etPercent.getText().toString();
                 if(username.isEmpty()){
                     Snackbar snack = Snackbar.make(v,"Username can't be empty",Snackbar.LENGTH_LONG);
                     snack.show();
-                }else {
+                }else if(desiredPercent.isEmpty()){
+                    Snackbar snack = Snackbar.make(v,"Threshold percentage can't be empty",Snackbar.LENGTH_LONG);
+                    snack.show();
+                }
+                else {
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     sp.edit().putString("pref_user",username).commit();
-
+                    sp.edit().putString("pref_desired",desiredPercent).commit();
                     Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(),MainActivity.class);
                     ActivityOptions options =

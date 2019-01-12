@@ -30,9 +30,28 @@
             android:textColor="@android:color/black"
             android:id="@+id/etUsername"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintTextColor="@android:color/black"
+        android:textColorHint="@color/color_GreyInde"
+        android:hint="Minimum required percentage?"
+        app:hintEnabled="true"
+        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox.Dense">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:textCursorDrawable="@null"
+            android:textColor="@android:color/black"
+            android:id="@+id/etPercent"
+            android:inputType="numberDecimal"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveButton"
-        android:layout_margin="25dp"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:padding="16dp"
         app:cornerRadius="25dp"
         android:layout_width="match_parent"

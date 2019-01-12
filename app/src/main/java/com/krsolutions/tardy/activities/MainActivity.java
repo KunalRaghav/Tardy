@@ -69,27 +69,26 @@ public class MainActivity extends AppCompatActivity {
             case R.id.setting:
                 Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
                 startActivity(intent);
-                return true;
+                break;
             case R.id.sortByTimeAdded:
                 sp.edit().putInt("sortOrder",0).commit();
                 new LoadTask(getApplicationContext(),progressBar,recyclerView).execute();
-                return true;
+                break;
             case R.id.sortByAlpha:
                 new LoadTask(getApplicationContext(),progressBar,recyclerView, funtool.SORT.alpha).execute();
                 sp.edit().putInt("sortOrder",1).commit();
-                return true;
+                break;
             case R.id.sortByPercentage:
                 new LoadTask(getApplicationContext(),progressBar,recyclerView, funtool.SORT.percent).execute();
                 sp.edit().putInt("sortOrder",2).commit();
+                break;
             case R.id.sortByClassAttended:
                 sp.edit().putInt("sortOrder",3).commit();
                 new LoadTask(getApplicationContext(),progressBar,recyclerView,funtool.SORT.classAttended).execute();
-
-
             default:
                 return super.onOptionsItemSelected(item);
-
         }
+        return true;
 
 
     }

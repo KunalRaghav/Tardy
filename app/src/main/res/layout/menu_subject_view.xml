@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/menu_subject_view_ll"
-    android:weightSum="3">
+    android:weightSum="3"
+    android:background="@color/color_Deer">
     <ImageView
         android:id="@+id/upClass"
         android:padding="8dp"

@@ -26,6 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.provider.BaseColumns._ID;
 import static com.krsolutions.tardy.data.TardyContract.TardyEntry.COLUMN_NAME_CLASSES_ATTENDED;
 import static com.krsolutions.tardy.data.TardyContract.TardyEntry.COLUMN_NAME_SUBJECT;
 import static com.krsolutions.tardy.data.TardyContract.TardyEntry.COLUMN_NAME_TOTAL_CLASSES;
@@ -53,7 +54,7 @@ public class SubjectActivity extends AppCompatActivity {
         final TardyDbHelper dbHelper = new TardyDbHelper(this);
         SQLiteDatabase read_db = dbHelper.getReadableDatabase();
 //        toolbar.setTitle(subname);
-        etSubjectName.setText(subname.toUpperCase());
+        etSubjectName.setText(subname);
         etSubjectName.setFocusable(false);
         etSubjectName.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -64,7 +65,7 @@ public class SubjectActivity extends AppCompatActivity {
         });
         Cursor cursor = read_db.rawQuery("Select * from "+TABLE_NAME+" where "+TardyContract.TardyEntry.COLUMN_NAME_SUBJECT +"=?",new String[]{subname});
         cursor.moveToFirst();
-        Subject mSubject = funtool.DbtoObject(cursor);
+        final Subject mSubject = funtool.DbtoObject(cursor);
         read_db.close();
         fabSaveChanges.setColorFilter(Color.WHITE);
         final float perc =funtool.calcPerc(mSubject.getClassesAttended(),mSubject.getTotalClasses());
@@ -97,7 +98,6 @@ public class SubjectActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     int tc = Integer.parseInt(etTotalClasses.getText().toString());
-                    int ca = Integer.parseInt(etClassesAttended.getText().toString());
                     etTotalClasses.setText(String.valueOf(tc + 1));
                 }catch (Exception e){
                     Snackbar snackbar = Snackbar.make(v,"Field is empty",Snackbar.LENGTH_LONG);
@@ -127,16 +127,25 @@ public class SubjectActivity extends AppCompatActivity {
                 try{
                     int tc = Integer.parseInt(etTotalClasses.getText().toString());
                     int ca = Integer.parseInt(etClassesAttended.getText().toString());
+                    String newSubName = etSubjectName.getText().toString();
                     if(ca<=tc) {
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
-                        String query = "Update " + TABLE_NAME + " set " + COLUMN_NAME_TOTAL_CLASSES + "=" + tc + ", " + COLUMN_NAME_CLASSES_ATTENDED + "=" + ca + " where " + COLUMN_NAME_SUBJECT + "=\"" + subname + "\";";
-                        Log.d(TAG, "onClick: Query\n" + query);
-                        db.execSQL(query);
-                        Snackbar snackbar = Snackbar.make(v, "Updated Subject", Snackbar.LENGTH_SHORT).setAction("Action", null);
-                        snackbar.setAnchorView(fabSaveChanges);
-                        snackbar.show();
-                        db.close();
-                        subjectPercentage.setText(String.format("%.2f", funtool.calcPerc(ca, tc)) + " %");
+                        try {
+                            String query = "Update " + TABLE_NAME + " set " + COLUMN_NAME_TOTAL_CLASSES + "=" + tc + ", " + COLUMN_NAME_CLASSES_ATTENDED + "=" + ca + ", " + COLUMN_NAME_SUBJECT + "=\"" + newSubName + "\" where " + _ID + "=\"" + mSubject.getSubjectID() + "\";";
+                            Log.d(TAG, "onClick: Query\n" + query);
+                            db.execSQL(query);
+                            Snackbar snackbar = Snackbar.make(v, "Updated Subject", Snackbar.LENGTH_SHORT).setAction("Action", null);
+                            snackbar.setAnchorView(fabSaveChanges);
+                            snackbar.show();
+                            db.close();
+                            subjectPercentage.setText(String.format("%.2f", funtool.calcPerc(ca, tc)) + " %");
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            Snackbar snackbar =Snackbar.make(v,"Subject name given is not unique",Snackbar.LENGTH_LONG);
+                            snackbar.setAnchorView(fabSaveChanges);
+                            snackbar.show();
+                        }
+
                     }else{
                         Snackbar snackbar = Snackbar.make(v,"Attended classes can't be more than total classes",Snackbar.LENGTH_LONG);
                         snackbar.setAnchorView(fabSaveChanges);
