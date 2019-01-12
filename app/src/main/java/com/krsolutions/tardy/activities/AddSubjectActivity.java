@@ -58,7 +58,7 @@ public class AddSubjectActivity extends AppCompatActivity {
                         !etTotalClasses.getText().toString().isEmpty() &&
                                 !etClassesAttended.getText().toString().isEmpty()
                         ){
-                    mSubject.SubjectName = etSubjectName.getText().toString();
+                    mSubject.SubjectName = etSubjectName.getText().toString().trim();
                     mSubject.TotalClasses = Integer.parseInt(etTotalClasses.getText().toString());
                     mSubject.ClassesAttended = Integer.parseInt(etClassesAttended.getText().toString());
                     if(mSubject.ClassesAttended<=mSubject.TotalClasses) {

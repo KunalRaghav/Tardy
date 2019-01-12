@@ -127,8 +127,12 @@ public class SubjectActivity extends AppCompatActivity {
                 try{
                     int tc = Integer.parseInt(etTotalClasses.getText().toString());
                     int ca = Integer.parseInt(etClassesAttended.getText().toString());
-                    String newSubName = etSubjectName.getText().toString();
-                    if(ca<=tc) {
+                    String newSubName = etSubjectName.getText().toString().trim();
+                    if(newSubName.isEmpty()){
+                        Snackbar snackbar =Snackbar.make(v,"Subject name cannot be empty",Snackbar.LENGTH_LONG);
+                        snackbar.setAnchorView(fabSaveChanges);
+                        snackbar.show();
+                    }else if(ca<=tc) {
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
                         try {
                             String query = "Update " + TABLE_NAME + " set " + COLUMN_NAME_TOTAL_CLASSES + "=" + tc + ", " + COLUMN_NAME_CLASSES_ATTENDED + "=" + ca + ", " + COLUMN_NAME_SUBJECT + "=\"" + newSubName + "\" where " + _ID + "=\"" + mSubject.getSubjectID() + "\";";
