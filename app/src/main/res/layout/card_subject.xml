@@ -19,10 +19,11 @@
         android:elevation="4dp"
         android:translationZ="8dp"
         app:contentPadding="0dp">
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="48dp">
+            android:paddingBottom="48dp"
+            android:id="@+id/subject_card_scroll_view">
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,51 +112,65 @@
                         tools:text="kskjdjskdjksjkd"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="From: "
+                        android:textAlignment="center"
+                        android:clickable="true"
+                        android:textSize="12dp"
+                        android:textColor="#000"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:background="?attr/selectableItemBackground"
+                        android:id="@+id/subject_card_from"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To: "
+                        android:textAlignment="center"
+                        android:textSize="12dp"
+                        android:textColor="#000"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:id="@+id/subject_card_to"
+                        android:background="?attr/selectableItemBackground"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+            <ProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_gravity="bottom"
-                android:padding="4dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginBottom="8dp">
+                android:id="@+id/progressBar_subjectCard" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/subject_history_rv"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/timeline_view"
+                    android:layout_marginTop="10dp"
+                    android:background="#DDD">
+                </androidx.recyclerview.widget.RecyclerView>
                 <com.google.android.material.button.MaterialButton
-                    android:layout_margin="4dp"
-                    android:id="@+id/btn_plus"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cornerRadius="10dp"
-                    android:clickable="true"
-                    android:layout_gravity="right"
-                    android:text="Class +"
+                    android:id="@+id/subject_card_show_history"
+                    android:text="Show/Hide History"
                     app:backgroundTint="#fff"
-                    app:rippleColor="@color/color_FuzzyWuzzy"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:textColor="@color/color_GreyInde"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
+                    android:textColor="#333"
+                    app:icon="@drawable/ic_history_black_24dp"
+                    app:iconTint="#333"
+                    app:iconGravity="textStart"
+                    app:cornerRadius="24dp"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="24dp"
+                    android:padding="8dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
                     />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_minus"
-                    android:layout_margin="4dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:rippleColor="@color/color_FuzzyWuzzy"
-                    app:cornerRadius="10dp"
-                    app:backgroundTint="#fff"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="100dp"
-                    android:clickable="true"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:text="Missed -"
-                    android:textColor="#f00"
-                    android:layout_weight="1"
-                    />
-            </LinearLayout>
+
         </androidx.appcompat.widget.LinearLayoutCompat>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
     </com.google.android.material.card.MaterialCardView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -39,7 +39,7 @@ public class AddSubjectActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
         mSubject = new Subject(-1,"null",-1,-1);
-        final TardyDbHelper mDbHelper = new TardyDbHelper(this);
+        final TardyDbHelper mTardyDbHelper = new TardyDbHelper(this);
 
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -62,7 +62,7 @@ public class AddSubjectActivity extends AppCompatActivity {
                     mSubject.TotalClasses = Integer.parseInt(etTotalClasses.getText().toString());
                     mSubject.ClassesAttended = Integer.parseInt(etClassesAttended.getText().toString());
                     if(mSubject.ClassesAttended<=mSubject.TotalClasses) {
-                        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+                        SQLiteDatabase db = mTardyDbHelper.getWritableDatabase();
                         ContentValues values = new ContentValues();
                         values.put(TardyContract.TardyEntry.COLUMN_NAME_SUBJECT, mSubject.SubjectName);
                         values.put(TardyContract.TardyEntry.COLUMN_NAME_TOTAL_CLASSES, mSubject.TotalClasses);

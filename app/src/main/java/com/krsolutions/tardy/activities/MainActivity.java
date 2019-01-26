@@ -21,6 +21,8 @@ import com.krsolutions.tardy.adapter.LoadTask;
 import com.krsolutions.tardy.data.funtool;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     BottomAppBar appBar;
     ProgressBar progressBar;
     TextView username;
+    CoordinatorLayout mainCoord;
     private static final String TAG = "MainActivity";
 
     @Override
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         setSupportActionBar(appBar);
         username = findViewById(R.id.username);
+        mainCoord = findViewById(R.id.main_co_ord);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +89,14 @@ public class MainActivity extends AppCompatActivity {
             case R.id.sortByClassAttended:
                 sp.edit().putInt("sortOrder",3).commit();
                 new LoadTask(getApplicationContext(),progressBar,recyclerView,funtool.SORT.classAttended).execute();
+                break;
+            case R.id.history:
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                HistoryFragment historyFragment = new HistoryFragment();
+                historyFragment.passFT(ft);
+                ft.setCustomAnimations(R.anim.slide_down,R.anim.slide_up_hide,R.anim.slide_down,R.anim.slide_up_hide);
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                ft.add(R.id.main_co_ord,historyFragment,"timelineView").addToBackStack(null).commit();
             default:
                 return super.onOptionsItemSelected(item);
         }

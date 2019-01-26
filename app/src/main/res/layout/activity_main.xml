@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity"
     android:paddingTop="0dp"
+    android:id="@+id/main_co_ord"
     android:background="@color/color_DesertSand">
 
     <LinearLayout

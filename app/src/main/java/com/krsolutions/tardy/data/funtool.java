@@ -1,8 +1,13 @@
 package com.krsolutions.tardy.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class funtool {
 
@@ -30,18 +35,26 @@ public class funtool {
         return (int)(req+0.5);
     }
     public static Subject upClass(Context context,String subjectName){
-        TardyDbHelper dbHelper = new TardyDbHelper(context);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+TardyContract.TardyEntry.TABLE_NAME+
+        TardyDbHelper tardyDbHelper = new TardyDbHelper(context);
+        SQLiteDatabase tardyDB = tardyDbHelper.getReadableDatabase();
+        Cursor cursor = tardyDB.rawQuery("SELECT * FROM "+TardyContract.TardyEntry.TABLE_NAME+
                 " WHERE "+TardyContract.TardyEntry.COLUMN_NAME_SUBJECT+ "=?"
                 ,new String[]{subjectName});
         cursor.moveToFirst();
         Subject mSubject = DbtoObject(cursor);
-        db.close();
-        db = dbHelper.getWritableDatabase();
+        tardyDB.close();
+        tardyDB = tardyDbHelper.getWritableDatabase();
         int newTotal = mSubject.getTotalClasses()+1;
         int newAttended = mSubject.getClassesAttended()+1;
-        db.execSQL(updateDB(newAttended,newTotal,mSubject.getSubjectName()));
+        tardyDB.execSQL(updateTardyDB(newAttended,newTotal,mSubject.getSubjectName()));
+
+        ContentValues cv = new ContentValues();
+        cv.put(DateContract.DateEntry.COLUMN_NAME_ENTRY_TIME, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        cv.put(DateContract.DateEntry.COLUMN_NAME_ENTRY_TYPE,1);
+        cv.put(DateContract.DateEntry.COLUMN_NAME_TARDY_SUBJECT_ID,mSubject.getSubjectID());
+        tardyDB.insertOrThrow(DateContract.DateEntry.TABLE_NAME,null,cv);
+        tardyDB.close();
+        tardyDbHelper.close();
         return new Subject(mSubject.subjectID,mSubject.SubjectName,mSubject.TotalClasses+1,mSubject.ClassesAttended+1);
     }
 
@@ -57,17 +70,45 @@ public class funtool {
         db = dbHelper.getWritableDatabase();
         int newTotal = mSubject.getTotalClasses()+1;
         int newAttended = mSubject.getClassesAttended();
-        db.execSQL(updateDB(newAttended,newTotal,mSubject.getSubjectName()));
+        db.execSQL(updateTardyDB(newAttended,newTotal,mSubject.getSubjectName()));
+        ContentValues cv = new ContentValues();
+        cv.put(DateContract.DateEntry.COLUMN_NAME_ENTRY_TIME, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        cv.put(DateContract.DateEntry.COLUMN_NAME_ENTRY_TYPE,-1);
+        cv.put(DateContract.DateEntry.COLUMN_NAME_TARDY_SUBJECT_ID,mSubject.getSubjectID());
+        db.insertOrThrow(DateContract.DateEntry.TABLE_NAME,null,cv);
+        db.close();
+        dbHelper.close();
         return new Subject(mSubject.subjectID,mSubject.SubjectName,mSubject.TotalClasses+1,mSubject.ClassesAttended);
     }
 
-    public static String updateDB(int attend, int total, String subName){
+    public static String updateTardyDB(int attend, int total, String subName){
         String string = "UPDATE "+TardyContract.TardyEntry.TABLE_NAME + " SET " +
                 TardyContract.TardyEntry.COLUMN_NAME_CLASSES_ATTENDED + "= " + attend +
                 ", " + TardyContract.TardyEntry.COLUMN_NAME_TOTAL_CLASSES+"= " +total +
                 " WHERE " + TardyContract.TardyEntry.COLUMN_NAME_SUBJECT+"= "+"\""+subName+"\""+";";
         return string;
 
+    }
+
+    public static String getWeekDay(int num){
+        switch (num){
+            case 1:
+                return "Sunday";
+            case 2:
+                return "Monday";
+            case 3:
+                return "Tuesday";
+            case 4:
+                return "Wednesday";
+            case 5:
+                return "Thursday";
+            case 6:
+                return "Friday";
+            case 7:
+                return "Saturday";
+            default:
+                return "Chutti";
+        }
     }
 
      public enum SORT{

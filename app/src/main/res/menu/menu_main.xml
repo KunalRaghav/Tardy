@@ -5,7 +5,6 @@
         android:id="@+id/filter"
         android:icon="@drawable/ic_sort_black_24dp"
         app:showAsAction="always"
-        android:iconTintMode="src_atop"
         android:title="Sort By">
         <menu>
                 <item
@@ -23,9 +22,14 @@
         </menu>
     </item>
     <item
+        android:id="@+id/history"
+        android:icon="@drawable/ic_history_black_24dp"
+        android:title="Past Attendance"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/setting"
         android:icon="@drawable/ic_settings_applications_black_24dp"
         android:title="Settings"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
 
 </menu>
