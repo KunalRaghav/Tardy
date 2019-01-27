@@ -30,6 +30,7 @@ import com.krsolutions.tardy.data.funtool;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -95,6 +96,16 @@ public class SubjectActivity extends AppCompatActivity {
         etClassesAttended.setFocusable(false);
         final long SubjectID = mSubject.getSubjectID();
         progressBar.setVisibility(View.GONE);
+        SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)-7);
+        Date tenDaysBefore = calendar.getTime();
+        calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)+8);
+        Date tomorrowDate = calendar.getTime();
+        String lowerDate = format.format(tenDaysBefore);
+        String upperDate = format.format(tomorrowDate);
+        tvFROM.setText("From: "+lowerDate);
+        tvTO.setText("To: "+upperDate);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        btnPlus.setOnClickListener(new View.OnClickListener() {
 //            @Override

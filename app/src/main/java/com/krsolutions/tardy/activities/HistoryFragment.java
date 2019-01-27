@@ -11,11 +11,9 @@ import android.widget.TextView;
 import com.google.android.material.button.MaterialButton;
 import com.krsolutions.tardy.R;
 import com.krsolutions.tardy.adapter.LoadTaskTimeline;
-import com.krsolutions.tardy.adapter.TimelineAdapter;
-import com.krsolutions.tardy.data.HistoryRecord;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import androidx.annotation.NonNull;
@@ -28,8 +26,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class HistoryFragment extends Fragment {
     View view = null;
     RecyclerView historyRecyclerView;
-    ArrayList<HistoryRecord> historyRecords = new ArrayList<HistoryRecord>();
-    TimelineAdapter timelineAdapter;
     ImageView closeHistoryIV;
     FragmentTransaction fragmentTransaction;
     ProgressBar progressBar;
@@ -127,8 +123,19 @@ public class HistoryFragment extends Fragment {
 //        timelineAdapter = new TimelineAdapter(historyRecords,getContext());
 //        historyRecyclerView.setAdapter(timelineAdapter);
         historyRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        new LoadTaskTimeline(getContext(),progressBar,historyRecyclerView).execute();
 
+
+        SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)-10);
+        Date tenDaysBefore = calendar.getTime();
+        String lowerDate = format.format(tenDaysBefore);
+        calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)+11);
+        Date tomorrowDate = calendar.getTime();
+        String upperDate = format.format(tomorrowDate);
+        timelineFrom.setText("From: "+lowerDate);
+        timelineTo.setText("To: "+upperDate);
+        new LoadTaskTimeline(getContext(),progressBar,historyRecyclerView,lowerDate,upperDate).execute();
     }
 
     private void removeFrag(){
