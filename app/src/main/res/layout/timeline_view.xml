@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/timeline_view_textView_Day"
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="8dp"
@@ -50,7 +50,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/timeline_view_circle"
             app:layout_constraintTop_toTopOf="@+id/timeline_view_textView_Date"
-            tools:text="Friday" />
+            tools:text="Wednesday" />
 
         <TextView
             android:id="@+id/timeline_view_textView_Date"
@@ -72,14 +72,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="64dp"
-            android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:fontFamily="sans-serif-smallcaps"
             android:textAlignment="viewStart"
             android:textColor="#111"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/timeline_view_textView_Date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/timeline_view_textView_Date"
             tools:text="9 am" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

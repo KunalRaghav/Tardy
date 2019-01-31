@@ -89,7 +89,9 @@ public class LoadTaskTimeline extends AsyncTask<Void, HistoryRecord,Void> {
             if(lowerDateBound==null) {
                 cursor = db.rawQuery(SQL_SELECTOR, null);
             }else {
+                Log.d(TAG, "doInBackground: Query:\n"+SQL_SELECTOR_BOUNDS_GIVEN(lowerDateBound,upperDateBound));
                 cursor = db.rawQuery(SQL_SELECTOR_BOUNDS_GIVEN(lowerDateBound,upperDateBound),null);
+                Log.d(TAG, "doInBackground: shit guiss I'm here");
             }
         } else {
             if(lowerDateBound==null) {

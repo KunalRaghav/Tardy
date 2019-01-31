@@ -126,6 +126,7 @@ public class HistoryFragment extends Fragment {
 
 
         SimpleDateFormat format = new SimpleDateFormat("dd MMM yyyy");
+        SimpleDateFormat format_query_date = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH,calendar.get(Calendar.DAY_OF_MONTH)-10);
         Date tenDaysBefore = calendar.getTime();
@@ -135,7 +136,10 @@ public class HistoryFragment extends Fragment {
         String upperDate = format.format(tomorrowDate);
         timelineFrom.setText("From: "+lowerDate);
         timelineTo.setText("To: "+upperDate);
-        new LoadTaskTimeline(getContext(),progressBar,historyRecyclerView,lowerDate,upperDate).execute();
+        String upperdateLimit =format_query_date.format(tomorrowDate);
+        String lowerdatelimit = format_query_date.format(tenDaysBefore);
+        new LoadTaskTimeline(getContext(),progressBar,historyRecyclerView,lowerdatelimit,upperdateLimit).execute();
+
     }
 
     private void removeFrag(){
