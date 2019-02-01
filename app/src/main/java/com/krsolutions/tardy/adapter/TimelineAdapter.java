@@ -73,7 +73,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.Viewho
 //        String datefield = funtool.getWeekDay(calendar.get(Calendar.DAY_OF_WEEK))+"\t\t"+strDate+"\t"+record.getEntryTime().split(" ")[1];
 //        holder.timelineDateTextView.setText(datefield);
         //Date changing from yyyy-mm-dd to dd-MMM-yy
-        SimpleDateFormat format_date_org = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat format_date_org = new SimpleDateFormat("yyyy-MM-dd");
         SimpleDateFormat format_date_user_friendly = new SimpleDateFormat("dd MMM yyyy");
         try {
             Date date = format_date_org.parse(strDate[0]);
