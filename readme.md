@@ -12,10 +12,10 @@ An app that can help track attendance.
 
 |||
 |:-:|:-:|
-![](screenshots/ss_1.png) | ![](screenshots/ss_2.png) 
-![](screenshots/ss_3.png) | ![](screenshots/ss_4.png)
-![](screenshots/ss_5.png) | ![](screenshots/ss_6.png)
-![](screenshots/ss_7.png) | ![](screenshots/ss_8.png)
+![](screenshots/ss_1.png) | ![](screenshots/ss_2.png)
+![](screenshots/ss_31.png) | ![](screenshots/ss_21.png) 
+![](screenshots/ss_4.png)| ![](screenshots/ss_61.png)
+![](screenshots/ss_6.png) |
 
 ## External Libraries Used:
 
