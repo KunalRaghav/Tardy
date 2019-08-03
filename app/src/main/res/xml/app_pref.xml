@@ -10,6 +10,9 @@
             android:key="pref_desired"
             android:inputType="numberDecimal"
             android:title="Desired Percentage"/>
+        <Preference
+            android:key="pref_backup"
+            android:title="Backup and Restore"/>
     </PreferenceCategory>
     <PreferenceCategory
         android:title="About">

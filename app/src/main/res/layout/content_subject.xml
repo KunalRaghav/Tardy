@@ -47,7 +47,6 @@
             app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:hintAnimationEnabled="true"
             app:boxBackgroundColor="#fff"
-            app:hintTextColor="@color/color_FuzzyWuzzy"
             style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/subetTotalClasses"
@@ -68,7 +67,6 @@
             android:layout_marginTop="100dp"
             app:boxCornerRadiusBottomStart="4dp"
             app:boxCornerRadiusTopEnd="4dp"
-            app:hintTextColor="@color/color_FuzzyWuzzy"
             app:boxCornerRadiusTopStart="4dp"
             app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
             app:boxBackgroundMode="outline"

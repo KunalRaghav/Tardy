@@ -36,7 +36,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/add_bottombar"
         app:fabAlignmentMode="end"
-        app:fabAnimationMode="scale"
         app:fabCradleVerticalOffset="8dp"
         android:backgroundTint="@color/color_Deer"
         android:layout_gravity="bottom">

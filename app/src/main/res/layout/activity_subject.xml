@@ -37,7 +37,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/subjectAppBar"
         android:layout_gravity="bottom"
-        app:fabAnimationMode="slide"
         android:backgroundTint="@color/color_Deer"
         app:fabAlignmentMode="end">
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        app:showAsAction="always"
+        android:id="@+id/navigation_subject"
+        android:title="Subjects"
+        android:icon="@drawable/ic_subject"/>
+    <item
+        app:showAsAction="always"
+        android:id="@+id/navigation_timeline"
+        android:title="Timeline"
+        android:icon="@drawable/ic_timeline"/>
+    <item
+        app:showAsAction="always"
+        android:id="@+id/navigation_settings"
+        android:title="Settings"
+        android:icon="@drawable/ic_settings"/>
+</menu>

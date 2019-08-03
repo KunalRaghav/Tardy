@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/manrope_regular" />
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="600"
+        app:font="@font/manrope_semibold" />
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="800"
+        app:font="@font/manrope_bold" />
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="1000"
+        app:font="@font/manrope_extrabold" />
+</font-family>

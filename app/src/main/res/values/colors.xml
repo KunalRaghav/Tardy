@@ -8,4 +8,11 @@
     <color name="color_Deer">#c18c5d</color>
     <color name="color_GreyInde">#495867</color>
     <color name="color_shadow">#EEFFFFFF</color>
+
+
+    <color name="color_primary">#2ba84a</color>
+    <color name="color_primary_dark">#248232</color>
+    <color name="color_text_dark">#040f0f</color>
+    <color name="color_text">#2d3a3a</color>
+    <color name="color_app_white">#fcfffc</color>
 </resources>

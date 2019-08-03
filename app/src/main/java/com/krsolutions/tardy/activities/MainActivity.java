@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.krsolutions.tardy.R;
 import com.krsolutions.tardy.adapter.LoadTask;
 import com.krsolutions.tardy.data.funtool;
@@ -23,12 +24,14 @@ import com.krsolutions.tardy.data.funtool;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    MaterialButton fab;
+    FloatingActionButton fab;
     BottomAppBar appBar;
     ProgressBar progressBar;
     TextView username;
@@ -45,9 +48,8 @@ public class MainActivity extends AppCompatActivity {
         appBar = findViewById(R.id.appBar);
         progressBar = findViewById(R.id.progressBar);
         setSupportActionBar(appBar);
-        username = findViewById(R.id.username);
         mainCoord = findViewById(R.id.main_co_ord);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, 1));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
         String uname = dsp.getString("pref_user", "");
         SharedPreferences sp = getSharedPreferences("com.krsolutions.tardy",MODE_PRIVATE);
-        username.setText(uname);
+//        username.setText(uname);
         Log.d(TAG, "onResume: sortOrder: "+ sp.getInt("sortOrder",0));
         switch(sp.getInt("sortOrder",0)) {
             case 0:

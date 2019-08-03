@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_subject"
+    app:startDestination="@id/subjectFragment">
+
+    <fragment
+        android:id="@+id/subjectFragment"
+        android:name="com.krsolutions.tardy.presentation.subjects_screen.SubjectFragment"
+        android:label="SubjectFragment"
+        tools:layout="@layout/fragment_subjects">
+        <action
+            android:id="@+id/action_subjectFragment_to_editSubjectFragment"
+            app:destination="@id/editSubjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSubjectFragment"
+        android:name="com.krsolutions.tardy.presentation.edit_subject_screen.EditSubjectFragment"
+        android:label="EditSubjectFragment"
+        tools:layout="@layout/fragment_edit_subject"/>
+</navigation>
